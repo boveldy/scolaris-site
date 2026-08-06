@@ -123,7 +123,19 @@ h3{font-size:19px}
 .nav{display:flex;gap:24px}
 .nav a{color:var(--encre);text-decoration:none;font-size:14.5px;font-weight:600;padding:6px 2px;border-bottom:2px solid transparent}
 .nav a:hover{border-bottom-color:var(--braise)}
-@media(max-width:920px){.nav{display:none}}
+.burger{display:none;flex:none;width:38px;height:38px;border-radius:10px;border:1px solid var(--bord);background:#fff;padding:0;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.burger span{width:18px;height:2px;background:var(--encre);border-radius:2px}
+@media(max-width:920px){
+  .nav{
+    display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--creme);border-bottom:1px solid var(--bord);padding:8px 20px 16px;
+    box-shadow:0 14px 24px rgba(42,18,7,.08);
+  }
+  .nav.ouvert{display:flex}
+  .nav a{padding:12px 0;border-bottom:1px solid var(--bord)}
+  .nav a:last-child{border-bottom:none}
+  .burger{display:flex}
+}
 
 /* ---------- héros ---------- */
 .heros{padding:64px 0 78px;overflow:hidden}
@@ -356,13 +368,16 @@ details p{margin:0;padding:0 22px 20px;color:var(--brun);font-size:15px;max-widt
 <header class="entete">
   <div class="large">
     <a class="logo" href="#haut"><b><img src="logo.png" alt="Scolaris" width="38" height="38"></b><i>Scolaris</i></a>
-    <nav class="nav">
+    <nav class="nav" id="navPrincipale">
       <a href="#fonctions">Fonctions</a>
       <a href="#roles">Pour qui</a>
       <a href="#offres">Offres</a>
       <a href="#installer">Installer</a>
     </nav>
     <a class="btn btn--vert btn--petit lien-inscription" href="#inscription">Inscrire mon école</a>
+    <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="navPrincipale" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -458,13 +473,14 @@ details p{margin:0;padding:0 22px 20px;color:var(--brun);font-size:15px;max-widt
 
     <div class="grille-4">
       <article class="carte rev"><span class="pastille pastille--rouge">👤</span><h3>Inscriptions &amp; pré-inscriptions</h3><p>Dossier complet par élève, validation des pré-inscriptions en un geste, listes de classes toujours à jour.</p></article>
-      <article class="carte rev"><span class="pastille pastille--orange">🏷️</span><h3>Classes &amp; passage de classe</h3><p>Niveaux, sections et effectifs. En fin d'année, le passage de classe prépare la rentrée suivante automatiquement.</p></article>
+      <article class="carte rev"><span class="pastille pastille--orange">🏷️</span><h3>Classes &amp; passage de classe</h3><p>Niveaux, sections et effectifs. En fin d'année, la direction décide classe par classe qui passe, redouble ou sort — puis applique tout en un clic.</p></article>
       <article class="carte rev"><span class="pastille pastille--vert">📖</span><h3>Matières &amp; cours</h3><p>Programme par niveau, coefficients, attribution des cours aux enseignants de l'établissement.</p></article>
-      <article class="carte rev"><span class="pastille pastille--or">★</span><h3>Notes &amp; moyennes</h3><p>Saisie par devoir, moyennes sur 20 calculées en direct, rangs et appréciations pour les bulletins.</p></article>
+      <article class="carte rev"><span class="pastille pastille--or">★</span><h3>Notes &amp; moyennes</h3><p>Saisie par devoir, moyennes calculées en direct, rangs et appréciations pour les bulletins.</p></article>
       <article class="carte rev"><span class="pastille pastille--rouge">📅</span><h3>Emploi du temps</h3><p>La semaine de chaque classe et de chaque enseignant, visible par les élèves depuis leur téléphone.</p></article>
       <article class="carte rev"><span class="pastille pastille--vert">▣</span><h3>Absences</h3><p>Appel quotidien, suivi par élève et par classe, total des jours d'absence sur le tableau de bord.</p></article>
       <article class="carte rev"><span class="pastille pastille--orange">💳</span><h3>Facturation &amp; scolarité</h3><p>Frais de scolarité, paiements enregistrés, situation de chaque famille et relances avant les compositions.</p></article>
-      <article class="carte rev"><span class="pastille pastille--or">📣</span><h3>Annonces &amp; rapports</h3><p>Messages à toute l'école, notifications dans l'application, rapports chiffrés pour piloter l'établissement.</p></article>
+      <article class="carte rev"><span class="pastille pastille--or">📚</span><h3>Bibliothèque numérique</h3><p>Livres, supports de cours et sujets d'examens en ligne, avec favoris et suivi de lecture pour chaque élève.</p></article>
+      <article class="carte rev"><span class="pastille pastille--rouge">🏅</span><h3>Cahier de liaison &amp; mérite</h3><p>Mots de la direction aux familles, badges et points de mérite pour valoriser assiduité et bons résultats.</p></article>
     </div>
   </div>
 </section>
@@ -472,18 +488,18 @@ details p{margin:0;padding:0 22px 20px;color:var(--brun);font-size:15px;max-widt
 <!-- ============ RÔLES ============ -->
 <section class="section" id="roles" style="padding-top:0">
   <div class="large">
-    <p class="oeil rev">Un compte, trois regards</p>
+    <p class="oeil rev">Un compte, quatre regards</p>
     <h2 class="rev">Chacun voit exactement ce qui le concerne</h2>
-    <p class="chapo rev">La direction pilote, les enseignants saisissent, les élèves suivent. Les droits sont réglés une fois pour toutes.</p>
+    <p class="chapo rev">La direction pilote, les enseignants saisissent, les élèves et les parents suivent. Les droits sont réglés une fois pour toutes.</p>
 
-    <div class="grille-3">
+    <div class="grille-4">
       <article class="carte rev">
         <span class="pastille pastille--rouge">🛡️</span>
         <h3>Direction</h3>
         <ul class="role-liste">
           <li>Tableau de bord et actions rapides : inscrire un élève, gérer classes et matières</li>
           <li>Facturation, scolarité et rapports de l'établissement</li>
-          <li>Comptes du personnel et annonces à toute l'école</li>
+          <li>Comptes du personnel, droits réglés par personne</li>
         </ul>
       </article>
       <article class="carte rev">
@@ -499,16 +515,25 @@ details p{margin:0;padding:0 22px 20px;color:var(--brun);font-size:15px;max-widt
         <span class="pastille pastille--or">🎓</span>
         <h3>Élève</h3>
         <ul class="role-liste">
-          <li>Sa moyenne sur 20, mise à jour à chaque note</li>
+          <li>Sa moyenne, mise à jour à chaque note</li>
           <li>Ses notes, ses absences, son emploi du temps</li>
           <li>Un accès simple, pensé pour le téléphone</li>
+        </ul>
+      </article>
+      <article class="carte rev">
+        <span class="pastille pastille--orange">👨‍👩‍👧</span>
+        <h3>Parent</h3>
+        <ul class="role-liste">
+          <li>Le suivi de chacun de ses enfants, même dans des classes différentes</li>
+          <li>Notes, absences et bulletins consultables à tout moment</li>
+          <li>Paiements de scolarité et situation à jour</li>
         </ul>
       </article>
     </div>
 
     <div class="bande-plateforme rev">
       <span class="pastille pastille--orange">🏢</span>
-      <p><b>Vous dirigez plusieurs écoles ?</b> La vue plateforme réunit tous vos établissements : effectifs, abonnements et annonces, d'un seul coup d'œil.</p>
+      <p><b>Vous dirigez plusieurs écoles ?</b> La vue plateforme réunit tous vos établissements : effectifs, abonnements et statistiques, d'un seul coup d'œil.</p>
       <a class="btn btn--vide btn--petit lien-inscription" href="#inscription">Parler de mon réseau</a>
     </div>
   </div>
@@ -521,10 +546,10 @@ details p{margin:0;padding:0 22px 20px;color:var(--brun);font-size:15px;max-widt
     <h2 class="rev">Quatre étapes, dans l'ordre</h2>
     <p class="chapo rev">Vous pouvez voir l'application avant même de créer un compte.</p>
     <ol class="etapes">
-      <li class="rev"><h3>Essayez la démo</h3><p>Des comptes de démonstration — direction, enseignant, élève — sont prêts sur l'écran de connexion. Un clic suffit.</p></li>
+      <li class="rev"><h3>Essayez la démo</h3><p>Des comptes de démonstration — direction, enseignant, élève, parent — sont accessibles depuis l'écran de connexion, sans créer de compte.</p></li>
       <li class="rev"><h3>Inscrivez votre école</h3><p>Le formulaire ci-dessous part sur notre serveur. Vous recevez vos accès sous 24 heures ouvrées, avec 14 jours d'essai.</p></li>
       <li class="rev"><h3>Configurez l'établissement</h3><p>Classes, matières, coefficients et comptes des enseignants : tout se règle depuis le tableau de bord de la direction.</p></li>
-      <li class="rev"><h3>Faites la rentrée</h3><p>Inscrivez vos élèves ou validez les pré-inscriptions. L'année suivante, le passage de classe fait le gros du travail.</p></li>
+      <li class="rev"><h3>Faites la rentrée</h3><p>Inscrivez vos élèves ou validez les pré-inscriptions. L'année suivante, l'écran de passage de classe applique vos décisions en un clic.</p></li>
     </ol>
   </div>
 </section>
@@ -650,7 +675,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--brun);font-size:15px;max-widt
       <details class="rev"><summary>Comment choisir mes modules ?</summary><p>À l'inscription, vous cochez ce qui vous intéresse : Académique (notes, bulletins, emploi du temps), Présences, Finances (facturation, paiements) ou Inscriptions. Seuls les menus liés aux modules choisis apparaissent dans l'application, pour vous et pour votre personnel. Vous pouvez ajouter ou retirer des modules à tout moment depuis « Mon abonnement ».</p></details>
       <details class="rev"><summary>Les élèves ont-ils vraiment leur propre accès ?</summary><p>Oui. Chaque élève voit sa moyenne mise à jour en direct, ses notes, ses absences et son emploi du temps de la semaine, depuis un téléphone. C'est aussi un canal simple pour tenir les familles informées.</p></details>
       <details class="rev"><summary>Où sont conservées les données de nos élèves ?</summary><p>Sur le serveur Scolaris, dans un espace réservé à votre établissement. Vous restez propriétaire de vos données et pouvez les exporter à tout moment, y compris si vous arrêtez l'abonnement.</p></details>
-      <details class="rev"><summary>Que se passe-t-il en fin d'année scolaire ?</summary><p>Le module de passage de classe fait monter les élèves au niveau suivant et prépare les listes de la rentrée. Les dossiers, l'historique des notes et la scolarité restent attachés à chaque élève.</p></details>
+      <details class="rev"><summary>Que se passe-t-il en fin d'année scolaire ?</summary><p>L'écran de passage de classe vous laisse décider, élève par élève, qui passe, redouble ou quitte l'établissement — puis applique toutes les décisions en un clic pour préparer les listes de la rentrée. Les dossiers, l'historique des notes et la scolarité restent attachés à chaque élève.</p></details>
       <details class="rev"><summary>Faut-il former le personnel ?</summary><p>Comptez une demi-journée pour la direction et moins d'une heure pour un enseignant : l'application est pensée pour le téléphone, avec des actions rapides. L'accompagnement de mise en route est compris dans les offres payantes.</p></details>
     </div>
   </div>
@@ -702,7 +727,21 @@ const CONFIG = {
 };
 
 /* ============================================================
-   2. Liens dérivés de la configuration
+   2. Menu mobile
+   ============================================================ */
+const burger = document.getElementById("burger");
+const navPrincipale = document.getElementById("navPrincipale");
+burger.addEventListener("click", () => {
+  const ouvert = navPrincipale.classList.toggle("ouvert");
+  burger.setAttribute("aria-expanded", String(ouvert));
+});
+navPrincipale.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+  navPrincipale.classList.remove("ouvert");
+  burger.setAttribute("aria-expanded", "false");
+}));
+
+/* ============================================================
+   3. Liens dérivés de la configuration
    ============================================================ */
 document.getElementById("annee").textContent = new Date().getFullYear();
 document.querySelectorAll("[data-app], #btnDemo").forEach(a=>{
